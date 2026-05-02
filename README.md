@@ -1,36 +1,91 @@
 # 🌌 GitShelf — The Premium Open-Source Hub
 
-**GitShelf** is a high-fidelity, glassmorphism-inspired mobile explorer for GitHub. It goes beyond simple discovery by providing deep integrations for developers and code enthusiasts. 
-
 ---
 ![Logo](https://imagur.org/i/1Ijd5r4K)
-## ✨ Latest Features (New Updates!)
+🌌 GitShelf — The Premium Shelf
+GitShelf is a high-fidelity, glassmorphism-inspired mobile explorer for GitHub. It transforms the way you discover, track, and manage open-source projects and applications.
 
-We've completely overhauled GitShelf. Here are the **brand new features** introduced in this release:
+📱 Feature
+🏠 1. Home Feed (The Discovery Engine)
+The Home tab is designed as an addictive, discovery-first feed for code.
 
-### 🧑‍💻 1. Deep Developer Tooling & Repo Insights
-*   **Repository Insights:** Comprehensive analytical view of a repository's health, contributor stats, and lifecycle (`RepoInsights.tsx`).
-*   **Issues & PR Tracker:** A dedicated Kanban-style view to explore active tickets, read issue descriptions, and track repository bugs right from your mobile device (`IssuesPRTab.tsx`).
-*   **PR Review Screen:** Dive deep into Pull Requests, view diffs, and approve/comment natively (`PRReviewScreen.tsx`).
-*   **Repo vs. Repo Compare:** Unsure which library to use? Use the `CompareTab.tsx` to pit two repositories head-to-head on stars, forks, issues, and activity.
+⚡ Quick Stats Dashboard: Three interactive floating cards at the top:
+Trending Button: Instantly jump to what's hot across GitHub.
+Downloads Button: Access your local repository assets and APKs.
+Recent Button: Browse your recently viewed feed.
+🔍 Advanced Search Bar:
+Mode Toggle: Specifically designed buttons to switch between Repo search and User search.
+Dynamic Placeholder: Changes based on search mode (Search repo... vs Search users...).
+Clear Button: Instant reset of search queries.
+🔥 New Releases Carousel: A horizontal scrolling section that highlights repositories you track which have fresh updates or tags.
+🏷️ Topic Chips: Minimalist text-only navigation for quick filtering:
+All, Android, Windows, MacOS, Linux.
+📊 Filter & Sort Bar:
+Language Selector: Drill down into specific stacks (Kotlin, Rust, Go, TypeScript, etc.) via a smooth slide-up bottom sheet.
+Sort Logic: Choose between Stars, Forks, Updated, or Best Match.
+🎴 Style Cards: High-fidelity cards featuring:
+Language Watermarks: Massive, faded background text indicating the primary language.
+Ambient Glow: Radial gradients matching the language's signature color.
+Floating Sidebar Actions:
+Save (Bookmark): Add to your private collection.
+Notify (Bell): Subscribe to future release alerts.
+Haptic Icons: Every interaction triggers a light vibration feedback.
+📦 2. App Store (Release Explorer)
+A specialized tab for finding ready-to-use open-source applications.
 
-### 🤝 2. Communication & Developer Networking
-*   **Global Activity Feed:** Stay updated with your network's latest stars, forks, and pushes via a clean, chronological feed (`ActivityFeed.tsx`).
-*   **Developer Profiles:** Rich profile pages (`UserDetailsPage.tsx`) showcasing contribution graphs and top repos.
-*   **Direct Messaging (DMs) & Threads:** A fully built communication center to message other developers and collaborate on code directly within GitShelf (`MessageTab.tsx`, `ChatThreadScreen.tsx`).
+💻 Platform Filter Tabs: Segregate apps by Android, Windows, Mac, or Linux.
+📥 Native Download Manager:
+Download Sheet: A slide-up panel showing all available assets for a release.
+Platform Badges: Automatic detection of file types with custom icons (APK icon for Android, Windows logo for EXE).
+Progress Tracking: Real-time percentage indicators inside the "GET" button.
+📈 App Sorting: Sort by Most Stars, Most Downloads, Recently Updated, or Newest Release.
+🔄 Silent Refresh: System automatically updates the app list in the background to ensure you see the latest versions.
+🔖 3. Collection & Saved
+Your personal library, curated and organized.
 
-### 📊 3. GitHub Wrapped
-*   **Your Year in Code:** An aesthetic, Spotify-style `GitHubWrapped.tsx` component that recaps your commits, most-used languages, and developer impact over the year in a shareable format.
+📁 Organized Folders: Group your saved repositories into custom categories (e.g., "Tools", "Games").
+👀 Watched Users: Monitor influential developers and get notified when they create new repositories.
+📤 Import/Export: Share your entire collection with others using a simple Base64 string link.
+🔔 4. Notifications
+Never miss a code update again.
+
+🔄 5-Minute Sync: Background process checks for new releases every 5 minutes.
+📲 Push Alerts: Receive native system notifications for new tags or releases.
+🔴 Unread Badges: Real-time notification bubbles on the navigation bar.
+⌨️ 5. Power User Features
+🕒 Recently Viewed: A dedicated side-panel showing every repository, app, and user you've interacted with recently.
+🧬 Deep Linking: Click a github.com link in your browser, and GitShelf will automatically handle it natively.
+📊 GitHub Wrapped: A beautiful analytical summary of your year on GitHub (if logged in).
+⚙️ 6. Settings & Customization
+🎨 Accent Colors: Choose your signature color (Blue, Green, Orange, Purple, Pink).
+🌑 Midnight Theme: Optimized for OLED screens with deep blacks and vibrant gradients.
+🔑 API Management: Input your GitHub Token to increase rate limits to 5000 req/hr.
+
+## 🛠️ Installation & Building
+
+1.  **Clone & Install dependencies**:
+    ```bash
+    git clone https://github.com/your-username/gitshelf.git
+    cd gitshelf
+    npm install
+    # or bun install
+    ```
+
+2.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
+
+3.  **Build Mobile (Capacitor for Android/iOS)**:
+    ```bash
+    npm run build
+    npx cap sync
+    npx cap open android
+    ```
 
 ---
 
-## 🎨 Design & Aesthetic Details
-
-*   **✨ Glassmorphism Core:** Heavy backdrop blurs (32px), translucent borders, and subtle glows define the "frosted glass" aesthetic.
-*   **⚙️ Haptic Engine:** Capacitor haptics provide selection, impact, and success feedback at every touch point.
-*   **🎭 Motion Design:** `Framer Motion` powers organic spring physics, skeleton loaders (`SkeletonLoader.tsx`), and staggered "fade-in-up" animations.
-
----
+*Built with ❤️ utilizing React, Tailwind CSS, Radix UI, Framer Motion, and Vite.*
 
 ## 🛠️ Installation & Building
 
