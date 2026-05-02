@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">GitShelf</string>
+    <string name="title_activity_main">GitShelf</string>
+    <string name="package_name">com.gitsync.app</string>
+    <string name="custom_url_scheme">com.gitsync.app</string>
+</resources>

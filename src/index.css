@@ -1,0 +1,556 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 29% 90%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 29% 90%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 29% 90%;
+    --primary: 212 100% 67%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 215 22% 11%;
+    --secondary-foreground: 210 29% 90%;
+    --muted: 215 22% 11%;
+    --muted-foreground: 215 9% 56%;
+    --accent: 212 100% 67%;
+    --accent-foreground: 210 29% 90%;
+    --destructive: 11 91% 68%;
+    --destructive-foreground: 210 29% 90%;
+    --border: 0 0% 100% / 0.15;
+    --input: 0 0% 100% / 0.15;
+    --ring: 212 100% 67%;
+    --radius: 0.625rem;
+
+    /* Custom tokens */
+    --blue: 212 100% 67%;
+    --green: 126 50% 42%;
+    --orange: 11 91% 68%;
+    --purple: 271 100% 83%;
+    --text-primary: 210 29% 90%;
+    --text-muted: 215 9% 56%;
+    --text-dim: 215 7% 45%;
+    --surface: 215 22% 11%;
+
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover-bg: rgba(255, 255, 255, 0.06);
+    --glass-hover-border: rgba(255, 255, 255, 0.12);
+    --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+    --bg-primary: rgba(18, 24, 33, 0.9);
+    --bg-secondary: #121821;
+    --anim-duration: 0.3s;
+
+    /* Dynamic Accent Colors (Default Blue) */
+    --accent-primary: #58a6ff;
+    --accent-secondary: rgba(88, 166, 255, 0.1);
+    --accent-border: rgba(88, 166, 255, 0.2);
+
+    /* Mobile APK Optimizations */
+    --touch-target: 48px;
+    --btn-radius: 16px;
+    --card-radius: 24px;
+    --section-spacing: 1.5rem;
+    --page-padding: 1.25rem;
+  }
+
+  :root[data-theme="midnight"] {
+    --bg-primary: #121821;
+    --bg-secondary: #1a202c;
+    --glass-bg: rgba(13, 17, 23, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover-bg: rgba(18, 22, 30, 0.7);
+    --glass-hover-border: rgba(255, 255, 255, 0.15);
+    --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  :root[data-theme="amoled"] {
+    --bg-primary: #0f141d;
+    --bg-secondary: #121821;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-hover-bg: rgba(255, 255, 255, 0.06);
+    --glass-hover-border: rgba(255, 255, 255, 0.12);
+    --glass-highlight: none;
+  }
+
+  /* Accent Color Variants */
+  :root[data-accent="blue"] {
+    --accent-primary: #58a6ff;
+    --accent-secondary: rgba(88, 166, 255, 0.15);
+    --accent-border: rgba(88, 166, 255, 0.3);
+  }
+
+  :root[data-accent="green"] {
+    --accent-primary: #3fb950;
+    --accent-secondary: rgba(63, 185, 80, 0.15);
+    --accent-border: rgba(63, 185, 80, 0.3);
+  }
+
+  :root[data-accent="purple"] {
+    --accent-primary: #d2a8ff;
+    --accent-secondary: rgba(210, 168, 255, 0.15);
+    --accent-border: rgba(210, 168, 255, 0.3);
+  }
+
+  :root[data-accent="orange"] {
+    --accent-primary: #f78166;
+    --accent-secondary: rgba(247, 129, 102, 0.15);
+    --accent-border: rgba(247, 129, 102, 0.3);
+  }
+
+  :root[data-accent="yellow"] {
+    --accent-primary: #e3b341;
+    --accent-secondary: rgba(227, 179, 65, 0.15);
+    --accent-border: rgba(227, 179, 65, 0.3);
+  }
+
+  :root[data-accent="pink"] {
+    --accent-primary: #ff7b72;
+    --accent-secondary: rgba(255, 123, 114, 0.15);
+    --accent-border: rgba(255, 123, 114, 0.3);
+  }
+}
+
+/* Hide all scrollbars globally for native feel */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+:root {
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
+}
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+@layer base {
+
+  html,
+  body {
+    height: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-primary);
+  }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background-color: var(--bg-primary);
+    background-image:
+      radial-gradient(circle at 50% -20%, rgba(88, 166, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, rgba(88, 166, 255, 0.03) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: hsl(var(--text-primary));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  img,
+  svg {
+    -webkit-user-drag: none;
+  }
+
+  button,
+  .cursor-pointer {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* GPU Accelerated rendering for smoother scroll & animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
+.font-mono,
+[class*="mono"] {
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.prose {
+  color: hsl(var(--text-muted));
+  font-size: 0.875rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.prose a {
+  color: #58a6ff;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose code {
+  background: hsl(var(--text-primary) / 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+}
+
+.prose pre {
+  background: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid hsl(var(--text-primary) / 0.05);
+}
+
+/* Glass card base */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: var(--glass-highlight);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.glass:active {
+  background: var(--glass-hover-bg);
+  border-color: var(--glass-hover-border);
+}
+
+.glass-static {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: var(--glass-highlight);
+}
+
+.btn-perfect {
+  background: var(--accent-primary);
+  color: #121821;
+  font-weight: 800;
+  border-radius: var(--btn-radius);
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-perfect:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
+  opacity: 0.9;
+}
+
+.glass-shelf-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--card-radius);
+}
+
+/* Background — solid for native Android feel */
+.app-bg {
+  background: transparent;
+  position: relative;
+}
+
+/* Animations — tight native Android timings */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 4px rgba(63, 185, 80, 0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.2s cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.15s ease both;
+}
+
+.animate-fadeInUp-1 {
+  animation: fadeInUp 0.2s cubic-bezier(0.2, 0, 0, 1) 0.03s both;
+}
+
+.animate-fadeInUp-2 {
+  animation: fadeInUp 0.2s cubic-bezier(0.2, 0, 0, 1) 0.05s both;
+}
+
+.animate-fadeInUp-3 {
+  animation: fadeInUp 0.2s cubic-bezier(0.2, 0, 0, 1) 0.07s both;
+}
+
+.animate-fadeInUp-4 {
+  animation: fadeInUp 0.2s cubic-bezier(0.2, 0, 0, 1) 0.09s both;
+}
+
+.animate-fadeInUp-5 {
+  animation: fadeInUp 0.2s cubic-bezier(0.2, 0, 0, 1) 0.11s both;
+}
+
+.animate-fadeInUp-6 {
+  animation: fadeInUp 0.2s cubic-bezier(0.2, 0, 0, 1) 0.13s both;
+}
+
+.pulse-dot {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-bg {
+  position: relative;
+  overflow: hidden;
+  background: var(--glass-bg);
+}
+
+.shimmer-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+/* Code font */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile-friendly Button Base */
+.btn-mobile {
+  min-height: var(--touch-target);
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: var(--btn-radius);
+  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-mobile:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+/* Material ripple effect for native Android feel */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 80%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.ripple:active::after {
+  opacity: 1;
+  transition: none;
+}
+
+/* cmdk styles */
+[cmdk-root] {
+  width: 100%;
+}
+
+[cmdk-input] {
+  font-size: 0.9rem;
+}
+
+[cmdk-item] {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  color: #e6edf3;
+  transition: background 0.15s;
+}
+
+[cmdk-item]:hover,
+[cmdk-item][data-selected='true'] {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[cmdk-group-heading] {
+  padding: 6px 8px;
+}
+
+[cmdk-list] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Swipe Gestures */
+.swipe-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  z-index: 10;
+  border-radius: inherit;
+}
+
+.swipe-indicator.left {
+  left: 0;
+  background: linear-gradient(to right, rgba(247, 129, 102, 0.4), transparent);
+  color: #f78166;
+}
+
+.swipe-indicator.right {
+  right: 0;
+  background: linear-gradient(to left, rgba(63, 185, 80, 0.4), transparent);
+  color: #3fb950;
+}
+
+/* Box Loader */
+.ai-matrix-loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-matrix-loader {
+  width: 60%;
+  height: 60%;
+  position: relative;
+  border: 2.5px solid currentColor;
+  box-sizing: border-box;
+  animation: box-spin 1.2s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
+}
+
+@keyframes box-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pb-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom, 24px) + 24px);
+}
+
+.pb-nav-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 84px);
+}
+
+.page-px {
+  padding-left: var(--page-padding) !important;
+  padding-right: var(--page-padding) !important;
+}
