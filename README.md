@@ -3,7 +3,7 @@
 **GitShelf** is a high-fidelity, glassmorphism-inspired mobile explorer for GitHub. It goes beyond simple discovery by providing deep integrations for developers and code enthusiasts. 
 
 ---
-
+![Logo](https://imagur.org/i/1Ijd5r4K)
 ## ✨ Latest Features (New Updates!)
 
 We've completely overhauled GitShelf. Here are the **brand new features** introduced in this release:
